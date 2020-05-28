@@ -16,8 +16,10 @@ var characterArrayHolder
 var caseSwitch = [0, 1]
 var currentCharacter
 var currentPassword
+var passwordLength
 
-function characterPicker() {
+// Picks which type of character to add to the characterArrayHolder for random selection
+function characterTypePicker(alphabeticalBool, numberBool, specialCharBool) {
   if (alphabeticalBool === true) {
     characterArrayHolder.append(alphabet)
   }
@@ -29,6 +31,11 @@ function characterPicker() {
   }
 }
 
+function characterRandomPicker () {
+  currentCharacter = Math.floor(Math.random() * characterArrayHolder.length)
+}
+
+// Changes character case if upper/lowercase bool is true
 function caseChange(uppercaseBool) {
   if (uppercaseBool === true && lowercaseBool === true) {
     caseSwitch = Math.floor(Math.random() * caseSwitch.length);
@@ -48,14 +55,24 @@ function caseChange(uppercaseBool) {
 }
 
 function generatePassword() {
-  var alphabetBool = prompt('Do you want to have alphabetical characters in your password?');
+  var alphabetBool = confirm('Do you want to have alphabetical characters in your password?');
   if (alphabeticalBool === true) {
-    var uppercaseBool = prompt('Would you like uppercase characters?')
-    var lowercaseBool = prompt('Would you like lowercase characters?')
+    var uppercaseBool = confirm('Would you like uppercase characters?')
+    var lowercaseBool = confirm('Would you like lowercase characters?')
   }
-  var numberBool = prompt('Do you want to have numerical characters in your password?')
-  var specialCharBool = prompt('Do you want to have special characters in your password?')
+  var numberBool = confirm('Do you want to have numerical characters in your password?')
+  var specialCharBool = confirm('Do you want to have special characters in your password?')
 
+  passwordLength = prompt("Choose a length between 8 and 128 characters for your password")
+
+  if (passwordLength > 128) {
+    alert("Please enter a valid length")
+  }
+  else if (passwordLength < 8 ) {
+    alert("Please enter a valid length")
+  }
+
+  characterTypePicker()
 
 }
 
