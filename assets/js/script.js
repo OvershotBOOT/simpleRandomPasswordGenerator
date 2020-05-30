@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'h', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 var specialCharacters = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
 
 var characterArr = [
@@ -53,14 +53,14 @@ function caseChange() {
     caseSwitch = Math.floor(Math.random() * caseSwitch.length);
     console.log(currentCharacter)
     if (caseSwitch === 1) {
-      currentCharacter.toUpperCase()
+    currentCharacter = currentCharacter.toUpperCase()
     } 
     else {
       currentCharacter.toLowerCase()
     }
   }
   else if (uppercaseBool === true && lowercaseBool === false)  {
-      currentCharacter.toUpperCase()
+    currentCharacter = currentCharacter.toUpperCase()
   }
   else {
     currentCharacter.toLowerCase()
@@ -68,6 +68,9 @@ function caseChange() {
 }
 
 function generatePassword() {
+
+      currentPassword = []
+
       alphabetBool = confirm('Do you want to have alphabetical characters in your password?');
   if (alphabetBool === true) {
         uppercaseBool = confirm('Would you like uppercase characters?');
@@ -91,7 +94,7 @@ function generatePassword() {
   characterRandomPicker()
   console.log(i)
   }
-  return currentpassword
+  return currentPassword
 }
 
 // Write password to the #password input
