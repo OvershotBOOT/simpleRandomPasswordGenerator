@@ -14,7 +14,7 @@ var characterArr = [
 var characterArrayHolder = []
 
 var caseSwitch = [0, 1]
-var currentCharacter = []
+var currentCharacter
 var currentPassword = []
 var passwordLength
 var alphabetBool
@@ -85,8 +85,9 @@ function generatePassword() {
     alert("Please enter a valid length")
   }
 
-  for (i = 0; i < passwordLength; i++) {
   characterTypePicker()
+
+  for (i = 0; i < passwordLength; i++) {
   characterRandomPicker()
   console.log(i)
   }
