@@ -25,15 +25,15 @@ var specialCharBool
 var i
 
 // Picks which type of character to add to the characterArrayHolder for random selection
-function characterTypePicker(alphabeticalBool, numberBool, specialCharBool) {
-  if (alphabeticalBool === true) {
-    characterArrayHolder.append(alphabet)
+function characterTypePicker(alphabetBool, numberBool, specialCharBool) {
+  if (alphabetBool === true) {
+    characterArrayHolder.push(alphabet)
   }
   if (numberBool === true) {
-    characterArrayHolder.append(numbers)
+    characterArrayHolder.push(numbers)
   }
   if (specialCharBool === true) {
-    characterArrayHolder.append(specialCharacters)
+    characterArrayHolder.push(specialCharacters)
   }
   console.log(characterArrayHolder)
 }
@@ -44,10 +44,11 @@ function characterRandomPicker () {
   caseChange(currentCharacter)
   currentCharacter.push().password
   console.log(currentCharacter)
+  console.log(password)
 }
 
 // Changes character case if upper/lowercase bool is true
-function caseChange(uppercaseBool) {
+function caseChange() {
   if (uppercaseBool === true && lowercaseBool === true) {
     caseSwitch = Math.floor(Math.random() * caseSwitch.length);
     if (caseSwitch === 1) {
@@ -86,9 +87,10 @@ function generatePassword() {
   // +++++++++++++++++++++++++++++++++++++++++++
   // If I had to guess there's something wrong with the way I'm calling the functions, the console log for both isn't showing up
   // +++++++++++++++++++++++++++++++++++++++++++
-  for (i === 0; i > passwordLength; i++) {
+  for (i = 0; i < passwordLength; i++) {
   characterTypePicker()
   characterRandomPicker()
+  console.log(i)
   }
 }
 
