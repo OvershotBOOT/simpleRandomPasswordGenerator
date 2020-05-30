@@ -11,11 +11,11 @@ var characterArr = [
     specialCharacters
   ]
 
-var characterArrayHolder
+var characterArrayHolder = []
 
 var caseSwitch = [0, 1]
-var currentCharacter
-var currentPassword
+var currentCharacter = []
+var currentPassword = []
 var passwordLength
 var alphabetBool
 var uppercaseBool
@@ -25,7 +25,7 @@ var specialCharBool
 var i
 
 // Picks which type of character to add to the characterArrayHolder for random selection
-function characterTypePicker(alphabetBool, numberBool, specialCharBool) {
+function characterTypePicker() {
   if (alphabetBool === true) {
     characterArrayHolder.push(alphabet)
   }
@@ -40,17 +40,18 @@ function characterTypePicker(alphabetBool, numberBool, specialCharBool) {
 
 function characterRandomPicker () {
   currentCharacter = characterArrayHolder[Math.floor(Math.random() * characterArrayHolder.length)]
-  currentCharacter = currentCharacter[Math.floor(Math.random * currentCharacter.length)]
+  currentCharacter = currentCharacter[Math.floor(Math.random() * currentCharacter.length)]
   caseChange(currentCharacter)
-  currentCharacter.push().password
   console.log(currentCharacter)
-  console.log(password)
+  currentPassword.push(currentCharacter)
+  console.log(currentPassword)
 }
 
 // Changes character case if upper/lowercase bool is true
 function caseChange() {
   if (uppercaseBool === true && lowercaseBool === true) {
     caseSwitch = Math.floor(Math.random() * caseSwitch.length);
+    console.log(currentCharacter)
     if (caseSwitch === 1) {
       currentCharacter.toUpperCase()
     } 
@@ -69,7 +70,7 @@ function caseChange() {
 function generatePassword() {
       alphabetBool = confirm('Do you want to have alphabetical characters in your password?');
   if (alphabetBool === true) {
-        uppercaseBool = confirm('Would you like uppercase characters?')
+        uppercaseBool = confirm('Would you like uppercase characters?');
         lowercaseBool = confirm('Would you like lowercase characters?')
   }
       numberBool = confirm('Do you want to have numerical characters in your password?')
@@ -84,14 +85,12 @@ function generatePassword() {
     alert("Please enter a valid length")
   }
 
-  // +++++++++++++++++++++++++++++++++++++++++++
-  // If I had to guess there's something wrong with the way I'm calling the functions, the console log for both isn't showing up
-  // +++++++++++++++++++++++++++++++++++++++++++
   for (i = 0; i < passwordLength; i++) {
   characterTypePicker()
   characterRandomPicker()
   console.log(i)
   }
+  return currentpassword
 }
 
 // Write password to the #password input
