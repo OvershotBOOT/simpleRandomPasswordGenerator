@@ -17,6 +17,12 @@ var caseSwitch = [0, 1]
 var currentCharacter
 var currentPassword
 var passwordLength
+var alphabetBool
+var uppercaseBool
+var lowercaseBool
+var numberBool
+var specialCharBool
+var i
 
 // Picks which type of character to add to the characterArrayHolder for random selection
 function characterTypePicker(alphabeticalBool, numberBool, specialCharBool) {
@@ -29,10 +35,15 @@ function characterTypePicker(alphabeticalBool, numberBool, specialCharBool) {
   if (specialCharBool === true) {
     characterArrayHolder.append(specialCharacters)
   }
+  console.log(characterArrayHolder)
 }
 
 function characterRandomPicker () {
-  currentCharacter = Math.floor(Math.random() * characterArrayHolder.length)
+  currentCharacter = characterArrayHolder[Math.floor(Math.random() * characterArrayHolder.length)]
+  currentCharacter = currentCharacter[Math.floor(Math.random * currentCharacter.length)]
+  caseChange(currentCharacter)
+  currentCharacter.push().password
+  console.log(currentCharacter)
 }
 
 // Changes character case if upper/lowercase bool is true
@@ -55,13 +66,13 @@ function caseChange(uppercaseBool) {
 }
 
 function generatePassword() {
-  var alphabetBool = confirm('Do you want to have alphabetical characters in your password?');
-  if (alphabeticalBool === true) {
-    var uppercaseBool = confirm('Would you like uppercase characters?')
-    var lowercaseBool = confirm('Would you like lowercase characters?')
+      alphabetBool = confirm('Do you want to have alphabetical characters in your password?');
+  if (alphabetBool === true) {
+        uppercaseBool = confirm('Would you like uppercase characters?')
+        lowercaseBool = confirm('Would you like lowercase characters?')
   }
-  var numberBool = confirm('Do you want to have numerical characters in your password?')
-  var specialCharBool = confirm('Do you want to have special characters in your password?')
+      numberBool = confirm('Do you want to have numerical characters in your password?')
+      specialCharBool = confirm('Do you want to have special characters in your password?')
 
   passwordLength = prompt("Choose a length between 8 and 128 characters for your password")
 
@@ -72,8 +83,13 @@ function generatePassword() {
     alert("Please enter a valid length")
   }
 
+  // +++++++++++++++++++++++++++++++++++++++++++
+  // If I had to guess there's something wrong with the way I'm calling the functions, the console log for both isn't showing up
+  // +++++++++++++++++++++++++++++++++++++++++++
+  for (i === 0; i > passwordLength; i++) {
   characterTypePicker()
-
+  characterRandomPicker()
+  }
 }
 
 // Write password to the #password input
