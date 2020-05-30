@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'h', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 var numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
-var specialCharacters = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
+var specialCharacters = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '-', '_', '+', '=', '{', '}']
 
 var characterArr = [
     alphabet,
@@ -35,24 +35,20 @@ function characterTypePicker() {
   if (specialCharBool === true) {
     characterArrayHolder.push(specialCharacters)
   }
-  console.log(characterArrayHolder)
 }
 
 function characterRandomPicker () {
   currentCharacter = characterArrayHolder[Math.floor(Math.random() * characterArrayHolder.length)]
   currentCharacter = currentCharacter[Math.floor(Math.random() * currentCharacter.length)]
   caseChange(currentCharacter)
-  console.log(currentCharacter)
   currentPassword.push(currentCharacter)
-  console.log(currentPassword)
 }
 
 // Changes character case if upper/lowercase bool is true
 function caseChange() {
   if (uppercaseBool === true && lowercaseBool === true) {
-    caseSwitch = Math.floor(Math.random() * caseSwitch.length);
-    console.log(currentCharacter)
-    if (caseSwitch === 1) {
+    var selectedCase = Math.floor(Math.random() * caseSwitch.length);
+    if (selectedCase === 1) {
     currentCharacter = currentCharacter.toUpperCase()
     } 
     else {
@@ -92,9 +88,8 @@ function generatePassword() {
 
   for (i = 0; i < passwordLength; i++) {
   characterRandomPicker()
-  console.log(i)
   }
-  return currentPassword
+  return currentPassword.join('')
 }
 
 // Write password to the #password input
