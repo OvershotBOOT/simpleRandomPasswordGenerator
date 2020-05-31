@@ -35,6 +35,7 @@ function characterTypePicker() {
   if (specialCharBool === true) {
     characterArrayHolder.push(specialCharacters)
   }
+  console.log(characterArrayHolder)
 }
 
 function characterRandomPicker () {
